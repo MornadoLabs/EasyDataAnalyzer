@@ -23,6 +23,11 @@ namespace EasyDataAnalyzer.Controllers
             ImportService = importService;
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         [Authorize]
         public IActionResult LoadHeaders(Dictionary<ImportParameters, string> importParameters)
         {

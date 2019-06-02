@@ -78,6 +78,7 @@ namespace EasyDataAnalyzer
             }
 
             app.UseHttpsRedirection();
+            app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseCookiePolicy();
 

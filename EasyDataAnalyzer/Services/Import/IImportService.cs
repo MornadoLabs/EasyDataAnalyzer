@@ -13,5 +13,6 @@ namespace EasyDataAnalyzer.Services.Import
         List<string> GetImportHeaders(FileStream dataStream);
         ImportResult ProcessImport(FileStream dataStream, ImportParametersViewModel parameters, string userId);
         List<ImportData> LoadDataByImportId(List<long> importIds);
+        List<ImportHeader> LoadImportHeadersById(List<int> headerIds);
     }
 }

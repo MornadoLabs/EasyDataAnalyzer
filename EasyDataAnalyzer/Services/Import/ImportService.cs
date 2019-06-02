@@ -30,6 +30,11 @@ namespace EasyDataAnalyzer.Services.Import
             return ImportRepository.LoadDataByImportId(importIds);
         }
 
+        public List<ImportHeader> LoadImportHeadersById(List<int> headerIds)
+        {
+            return ImportRepository.LoadImportHeadersById(headerIds);
+        }
+
         public List<string> GetImportHeaders(FileStream dataStream)
         {
             var result = new List<string>();

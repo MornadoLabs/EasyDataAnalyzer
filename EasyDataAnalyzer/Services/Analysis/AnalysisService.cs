@@ -20,11 +20,33 @@ namespace EasyDataAnalyzer.Services.Analysis
         {
             AnalysisRepository = analysisRepository;
             ImportService = importService;
+            AnalysisStrategy = new ClusteringStrategy();
         }
 
         public IAnalysisResult AnalyzeData(AnalysisParametersModel parameters)
         {
+            SetAnalysisStrategy(parameters.AnalysisMethod);
+            var data = ImportService.LoadDataByImportId(parameters.ImportId);
+            var headers = ImportService.LoadImportHeadersById(parameters.MainHeadersId);
+            return AnalysisStrategy.AnalyzeData(headers, data, parameters.Args);
+        }
 
+        private void SetAnalysisStrategy(AnalysisMethods analysisMethod)
+        {
+            switch (analysisMethod)
+            {
+                case AnalysisMethods.Regression:
+                    AnalysisStrategy = new RegressionStrategy();
+                    break;
+                case AnalysisMethods.AssociationRulesSearch:
+                    AnalysisStrategy = new AssociationRulesSearchStrategy();
+                    break;
+                case AnalysisMethods.Clustering:
+                    AnalysisStrategy = new ClusteringStrategy();
+                    break;
+                default:
+                    throw new Exception("Невідомий метод аналізу.");
+            }
         }
     }
 }

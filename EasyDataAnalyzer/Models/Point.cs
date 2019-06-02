@@ -33,5 +33,10 @@ namespace EasyDataAnalyzer.Models
         {
             return new Point(this.X, this.Y);
         }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y);
+        }
     }
 }
