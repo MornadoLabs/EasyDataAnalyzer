@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace EasyDataAnalyzer.Models.Import
 {
-    public class ImportParametersViewModel
+    public class LoadHeadersViewModel
     {
         public string TempFilePath { get; set; }
-        public ImportMethods ImportMethod { get; set; }
+        public List<string> Headers { get; set; }
         public Dictionary<ImportParameters, string> Parameters { get; set; }
-        public List<ImportHeaderParameters> HeaderParameters { get; set; }
+        public List<ImportDataTypes> DataTypes { get; set; }
+        public List<ImportDataPriorityLevels> PriorityLevels { get; set; }
     }
 }

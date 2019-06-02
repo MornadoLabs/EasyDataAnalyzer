@@ -15,11 +15,6 @@ namespace EasyDataAnalyzer.Repositories
 
         public IdentityUser GetUserById(string userId)
         {
-            if (string.IsNullOrWhiteSpace(userId))
-            {
-                return null;
-            }
-
             return DbContext.Users.FirstOrDefault(u => userId.Equals(u.Id));
         }
     }

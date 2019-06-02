@@ -14,6 +14,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using EasyDataAnalyzer.Repositories;
 using EasyDataAnalyzer.Services.Import;
+using EasyDataAnalyzer.Services;
+using EasyDataAnalyzer.Services.Analysis;
 
 namespace EasyDataAnalyzer
 {
@@ -54,8 +56,9 @@ namespace EasyDataAnalyzer
 
             #region Services
 
+            services.AddSingleton<IUserService, UserService>();
             services.AddSingleton<IImportService, ImportService>();
-            //services.AddSingleton<IAnalysisSe, AnalysisService>();
+            services.AddSingleton<IAnalysisService, AnalysisService>();
 
             #endregion
         }

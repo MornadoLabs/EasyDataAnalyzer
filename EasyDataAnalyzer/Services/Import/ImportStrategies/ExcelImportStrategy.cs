@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using EasyDataAnalyzer.Constants;
 using EasyDataAnalyzer.Data.Entities;
 using EasyDataAnalyzer.Enums;
 using EasyDataAnalyzer.Models.Import;
@@ -15,10 +16,6 @@ namespace EasyDataAnalyzer.Services.Import.ImportStrategies
 {
     public class ExcelImportStrategy : IImportStrategy
     {
-        private const string ErrorHeader = "Опис помилки";
-        private const string ErrorFolder = "App_Data";
-        private const string ErrorSheetName = "Помилки";
-
         public ImportModel ImportData(FileStream dataStream, ImportParametersViewModel parameters)
         {
             var result = new ImportModel();
@@ -27,14 +24,14 @@ namespace EasyDataAnalyzer.Services.Import.ImportStrategies
             var headers = sheet.GetRow(0);
 
             var errorWb = new XSSFWorkbook();
-            var errorSheet = errorWb.CreateSheet(ErrorSheetName);
+            var errorSheet = errorWb.CreateSheet(ImportConstants.ErrorSheetName);
             var errorHeadersRow = errorSheet.CreateRow(0);
 
             for (int i = 0; i <= headers.LastCellNum; i++)
             {
                 errorHeadersRow.CreateCell(i).SetCellValue(headers.GetCell(i).ToString());
             }
-            errorHeadersRow.CreateCell(headers.LastCellNum + 1).SetCellValue(ErrorHeader);            
+            errorHeadersRow.CreateCell(headers.LastCellNum + 1).SetCellValue(ImportConstants.ErrorHeader);            
             
             for (int i = 1; i <= sheet.LastRowNum; i++)
             {
@@ -59,7 +56,9 @@ namespace EasyDataAnalyzer.Services.Import.ImportStrategies
 
             if (errorSheet.LastRowNum > 0)
             {
-                var errorFilePath = Path.Combine(Directory.GetCurrentDirectory(), ErrorFolder, dataStream.Name, Guid.NewGuid().ToString());
+                var fileExtension = Path.GetExtension(dataStream.Name);
+                var fileName = dataStream.Name.Insert(dataStream.Name.IndexOf(fileExtension), ImportConstants.ErrorFile);
+                var errorFilePath = Path.Combine(CommonConstants.TempFolder, ImportConstants.ErrorFolder, fileName);
                 result.ErrorFilePath = errorFilePath;
                 result.ErrorsCount = errorSheet.LastRowNum + 1;
                 using (var errorFile = new FileStream(errorFilePath, FileMode.Create, FileAccess.Write))
@@ -102,7 +101,7 @@ namespace EasyDataAnalyzer.Services.Import.ImportStrategies
 
             if (parseResult.ThereIsError)
             {
-                parseResult.RowData.Add(ErrorHeader, parseResult.ErrorMessage);
+                parseResult.RowData.Add(ImportConstants.ErrorHeader, parseResult.ErrorMessage);
             }
 
             return parseResult;

@@ -1,4 +1,5 @@
 ﻿using EasyDataAnalyzer.Data.Entities;
+using EasyDataAnalyzer.Enums;
 using EasyDataAnalyzer.Models.Import;
 using EasyDataAnalyzer.Repositories;
 using EasyDataAnalyzer.Services.Import.ImportStrategies;
@@ -15,13 +16,18 @@ namespace EasyDataAnalyzer.Services.Import
     {
         private IImportStrategy ImportStrategy { get; set; }
         private IImportRepository ImportRepository { get; set; }
-        private IUserRepository UserRepository { get; set; }
+        private IUserService UserService { get; set; }
 
-        public ImportService(IImportRepository repository, IUserRepository userRepository)
+        public ImportService(IImportRepository repository, IUserService userService)
         {
             ImportRepository = repository;
-            UserRepository = userRepository;
+            UserService = userService;
             ImportStrategy = new ExcelImportStrategy();
+        }
+
+        public List<ImportData> LoadDataByImportId(List<long> importIds)
+        {
+            return ImportRepository.LoadDataByImportId(importIds);
         }
 
         public List<string> GetImportHeaders(FileStream dataStream)
@@ -35,11 +41,13 @@ namespace EasyDataAnalyzer.Services.Import
 
         public ImportResult ProcessImport(FileStream dataStream, ImportParametersViewModel parameters, string userId)
         {
-            var user = UserRepository.GetUserById(userId);
+            var user = UserService.GetUserById(userId);
             if (user == null)
             {
                 throw new Exception("Не вдалось завантажити дані користувача.");
             }
+
+            SetImportStrategy(parameters.ImportMethod);
 
             var parsedImport = ImportStrategy.ImportData(dataStream, parameters);
             var currentImport = ImportRepository.SaveImport(new UserImport
@@ -76,6 +84,7 @@ namespace EasyDataAnalyzer.Services.Import
                         rowCells.Add(new ImportData
                         {
                             Header = header,
+                            RowNumber = parsedImport.Data.IndexOf(dataRow) + 1,
                             Value = dataRow[header.HeaderName]
                         });
                     }
@@ -91,6 +100,16 @@ namespace EasyDataAnalyzer.Services.Import
                 ErrorFilePath = parsedImport.ErrorFilePath,
                 Message = $"Імпорт пройшов успішно. Опрацьовано записів: {currentImport.RecordsCount}. З них не розпізнано: {parsedImport.ErrorsCount}"
             };
+        }
+
+        private void SetImportStrategy(ImportMethods method)
+        {
+            switch (method)
+            {
+                case ImportMethods.ExcelImport:
+                default:
+                    ImportStrategy = new ExcelImportStrategy(); break;
+            }
         }
     }
 }

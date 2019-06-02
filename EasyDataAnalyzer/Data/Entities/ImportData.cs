@@ -14,6 +14,9 @@ namespace EasyDataAnalyzer.Data.Entities
         public ImportHeader Header { get; set; }
 
         [Required]
+        public long RowNumber { get; set; }
+
+        [Required]
         public string Value { get; set; }
     }
 }
