@@ -23,29 +23,35 @@ namespace EasyDataAnalyzer.Controllers
             ImportService = importService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
         [Authorize]
-        public IActionResult LoadHeaders(Dictionary<ImportParameters, string> importParameters)
+        [HttpPost("UploadFiles")]
+        public async Task<IActionResult> LoadHeaders(InitImportModel parameters)
         {
-            IFormFile file = Request.Form.Files[0];
-            if (file.Length < 1)
+            if (parameters.File == null)
             {
                 throw new Exception("Не завантажено файл.");
             }
-            string fullPath = Path.Combine(CommonConstants.TempFolder, file.FileName);
+            string fullPath = Path.Combine(CommonConstants.TempFolder, parameters.File.FileName);
             using (var stream = new FileStream(fullPath, FileMode.Create))
             {
-                file.CopyTo(stream);
+                await parameters.File.CopyToAsync(stream);
                 var headers = ImportService.GetImportHeaders(stream);
                 return View(new LoadHeadersViewModel
                 {
-                    TempFilePath = fullPath,
+                    TempFilePath = fullPath,                    
                     Headers = headers,
-                    Parameters = importParameters,
+                    Parameters = new ImportParametersModel
+                    {
+                        DataFormat = parameters.DataFormat,
+                        NumericSeparator = parameters.NumericSeparator,
+                        EmptyValueIsNull = parameters.EmptyValueIsNull
+                    },
                     DataTypes = Enum.GetValues(typeof(ImportDataTypes)).Cast<ImportDataTypes>().ToList(),
                     PriorityLevels = Enum.GetValues(typeof(ImportDataPriorityLevels)).Cast<ImportDataPriorityLevels>().ToList()
                 });
@@ -53,6 +59,7 @@ namespace EasyDataAnalyzer.Controllers
         }
 
         [Authorize]
+        [HttpPost]
         public JsonResult ProcessImport(ImportParametersViewModel parameters)
         {
             try

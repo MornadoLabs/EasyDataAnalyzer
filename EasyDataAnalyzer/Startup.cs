@@ -48,17 +48,17 @@ namespace EasyDataAnalyzer
 
             #region Repositories
 
-            services.AddSingleton<IUserRepository, UserRepository>();
-            services.AddSingleton<IImportRepository, ImportRepository>();
-            services.AddSingleton<IAnalysisRepository, AnalysisRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IImportRepository, ImportRepository>();
+            services.AddTransient<IAnalysisRepository, AnalysisRepository>();
 
             #endregion
 
             #region Services
 
-            services.AddSingleton<IUserService, UserService>();
-            services.AddSingleton<IImportService, ImportService>();
-            services.AddSingleton<IAnalysisService, AnalysisService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IImportService, ImportService>();
+            services.AddTransient<IAnalysisService, AnalysisService>();
 
             #endregion
         }

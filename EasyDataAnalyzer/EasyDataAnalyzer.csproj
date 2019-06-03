@@ -6,6 +6,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\20190602234042_InitMigration.cs" />
+    <Compile Remove="Data\Migrations\20190602234042_InitMigration.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Scripts\import.ts" />
+    <None Remove="Scripts\main.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Scripts\import.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Accord.MachineLearning" Version="3.8.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
@@ -19,6 +33,11 @@
 
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\import.js" />
+    <None Include="wwwroot\js\import.js.map" />
   </ItemGroup>
 
 </Project>

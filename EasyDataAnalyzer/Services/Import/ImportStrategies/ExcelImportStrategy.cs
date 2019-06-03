@@ -109,28 +109,24 @@ namespace EasyDataAnalyzer.Services.Import.ImportStrategies
 
         private ParseCellResult ParseCellValue(
             string value, 
-            Dictionary<ImportParameters, string> importParameters,
+            ImportParametersModel importParameters,
             ImportHeaderParameters headerParameters)
         {
-            if (importParameters.ContainsKey(ImportParameters.SetEmptyValueAsNull))
+            if (importParameters.EmptyValueIsNull && string.IsNullOrWhiteSpace(value))
             {
-                if ("true".Equals(importParameters[ImportParameters.SetEmptyValueAsNull].ToLower(CultureInfo.InvariantCulture))
-                    && string.IsNullOrWhiteSpace(value))
-                {
-                    return new ParseCellResult { Success = true, ResultValue = null }; 
-                }
-            }
+                return new ParseCellResult { Success = true, ResultValue = null };
+            }            
 
             switch (headerParameters.DataType)
             {
                 case ImportDataTypes.Date:
                     {
-                        if (importParameters.ContainsKey(ImportParameters.DataTimeFormat))
+                        if (!string.IsNullOrWhiteSpace(importParameters.DataFormat))
                         {
                             DateTime resultValue;
                             if (DateTime.TryParseExact(
                                 value,
-                                importParameters[ImportParameters.DataTimeFormat],
+                                importParameters.DataFormat,
                                 CultureInfo.InvariantCulture,
                                 DateTimeStyles.None,
                                 out resultValue))
@@ -157,10 +153,10 @@ namespace EasyDataAnalyzer.Services.Import.ImportStrategies
                     }
                 case ImportDataTypes.Numeric:
                     {
-                        if (importParameters.ContainsKey(ImportParameters.MoneySeparator))
+                        if (!string.IsNullOrWhiteSpace(importParameters.NumericSeparator))
                         {
                             double resultValue;
-                            if (TryParseNumber(value, importParameters[ImportParameters.MoneySeparator], out resultValue))
+                            if (TryParseNumber(value, importParameters.NumericSeparator, out resultValue))
                             {
                                 return new ParseCellResult { Success = true, ResultValue = resultValue.ToString() };
                             }

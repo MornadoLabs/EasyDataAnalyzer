@@ -62,12 +62,7 @@ namespace EasyDataAnalyzer.Services.Import
                 ImportDate = DateTime.Now
             });
 
-            ImportRepository.SaveImportParameters(parameters.Parameters.Select(p => new ImportParameter
-            {
-                Import = currentImport,
-                ParameterName = p.Key.ToString(),
-                ParameterValue = p.Value
-            }).ToList());
+            ImportRepository.SaveImportParameters(ParseImportParameters(currentImport, parameters.Parameters));
                         
             ImportRepository.SaveImportHeaders(parameters.HeaderParameters.Select(hp => new ImportHeader
             {
@@ -115,6 +110,40 @@ namespace EasyDataAnalyzer.Services.Import
                 default:
                     ImportStrategy = new ExcelImportStrategy(); break;
             }
+        }
+
+        private List<ImportParameter> ParseImportParameters(UserImport import, ImportParametersModel parameters)
+        {
+            var result = new List<ImportParameter>();
+
+            if (!string.IsNullOrWhiteSpace(parameters.DataFormat))
+            {
+                result.Add(new ImportParameter
+                {
+                    Import = import,
+                    ParameterName = ImportParameters.DataTimeFormat.ToString(),
+                    ParameterValue = parameters.DataFormat
+                });
+            }
+
+            if (!string.IsNullOrWhiteSpace(parameters.NumericSeparator))
+            {
+                result.Add(new ImportParameter
+                {
+                    Import = import,
+                    ParameterName = ImportParameters.NumericSeparator.ToString(),
+                    ParameterValue = parameters.NumericSeparator
+                });
+            }
+
+            result.Add(new ImportParameter
+            {
+                Import = import,
+                ParameterName = ImportParameters.SetEmptyValueAsNull.ToString(),
+                ParameterValue = parameters.EmptyValueIsNull.ToString()
+            });
+
+            return result;
         }
     }
 }

@@ -7,8 +7,8 @@ namespace EasyDataAnalyzer.Enums
 {
     public enum ImportParameters
     {
-        DataTimeFormat,
-        SetEmptyValueAsNull,
-        MoneySeparator
+        DataTimeFormat = 1,
+        SetEmptyValueAsNull = 2,
+        NumericSeparator = 3
     }
 }

@@ -10,7 +10,7 @@ namespace EasyDataAnalyzer.Models.Import
     {
         public string TempFilePath { get; set; }
         public List<string> Headers { get; set; }
-        public Dictionary<ImportParameters, string> Parameters { get; set; }
+        public ImportParametersModel Parameters { get; set; }
         public List<ImportDataTypes> DataTypes { get; set; }
         public List<ImportDataPriorityLevels> PriorityLevels { get; set; }
     }

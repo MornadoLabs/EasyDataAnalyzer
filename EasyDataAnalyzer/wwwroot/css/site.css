@@ -35,3 +35,7 @@ body {
         display: none;
     }
 }
+
+.row {
+    margin-bottom: 10px;
+}

@@ -9,11 +9,7 @@ namespace EasyDataAnalyzer.Data.Entities
 {
     public class AnalysisHistory
     {
-        public long Id { get; set; }
-
-        [Required]
-        public IdentityUser User { get; set; }
-
+        public long Id { get; set; }        
         public DateTime AnalysisDate { get; set; }
     }
 }

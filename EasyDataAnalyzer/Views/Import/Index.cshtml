@@ -1,23 +1,45 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Import";
 }
 
-<h2>Іьзщке даних</h2>
-<form method="post" enctype="multipart/form-data">
+<h2>Імпорт даних</h2>
+<form method="post" enctype="multipart/form-data" asp-controller="Import" asp-action="LoadHeaders">
     <div class="row">
         <div class="col-md-4">
-            <input type="file" id="fUpload" name="files" class="form-control" />
+            <label>Оберіть файл</label>
         </div>
-        <div class="col-md-8">
-            <input type="button" id="btnUpload" value="Upload" />
+        <div class="col-md-4">
+            <input type="file" id="fUpload" name="File" accept=".xls,.xlsx" class="form-control" />
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8" style="padding-top:10px;">
-            <button asp-page-handler="Export">Export</button>
+        <div class="col-md-4">
+            <label>Формат дати: </label>
+        </div>
+        <div class="col-md-2">
+            <input type="text" id="dataFormat" name="DataFormat" class="form-control" />
         </div>
     </div>
-    <br />
-    <div id="dvData"></div>
+    <div class="row">
+        <div class="col-md-4">
+            <label>Сепаратор десяткових значень: </label>
+        </div>
+        <div class="col-md-1">
+            <input type="text" id="numericSeparator" name="NumericSeparator" maxlength="1" class="form-control" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label>Сприймати порожні значення як NULL: </label>
+        </div>
+        <div class="col-md-1">
+            <input type="checkbox" id="emptyValueIsNull" name="EmptyValueIsNull" class="form-control pull-left" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <input type="submit" id="btnUpload" value="Upload" />
+        </div>
+    </div>
 </form>
