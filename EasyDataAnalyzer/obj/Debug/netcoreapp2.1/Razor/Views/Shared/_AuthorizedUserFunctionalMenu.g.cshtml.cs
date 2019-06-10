@@ -56,7 +56,7 @@ using EasyDataAnalyzer.Models;
             WriteLiteral("\r\n<li>");
             EndContext();
             BeginContext(6, 68, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "847bbd9510ce42c88a71abb58a9eab50", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e7554034fdf74cf38cb650319a0cdadc", async() => {
                 BeginContext(64, 6, true);
                 WriteLiteral("Імпорт");
                 EndContext();

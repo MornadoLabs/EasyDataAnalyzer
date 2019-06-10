@@ -38,9 +38,10 @@ namespace EasyDataAnalyzer.Controllers
                 throw new Exception("Не завантажено файл.");
             }
             string fullPath = Path.Combine(CommonConstants.TempFolder, parameters.File.FileName);
-            using (var stream = new FileStream(fullPath, FileMode.Create))
+            using (var stream = new FileStream(fullPath, FileMode.Create, FileAccess.ReadWrite))
             {
                 await parameters.File.CopyToAsync(stream);
+                stream.Position = 0;
                 var headers = ImportService.GetImportHeaders(stream);
                 return View(new LoadHeadersViewModel
                 {

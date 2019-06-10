@@ -11,6 +11,11 @@
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/select2/css/select2.min.css" />
+        <link rel="stylesheet" href="~/lib/datatables/css/dataTables.bootstrap.min.css" />
+        <link rel="stylesheet" href="~/lib/datatables/css/jquery.dataTables.min.css" />
+        <link rel="stylesheet" href="~/lib/datatables/css/dataTables.jqueryui.min.css" />
+        <link rel="stylesheet" href="~/lib/datatables/css/dataTables.material.min.css" />
         <link rel="stylesheet" href="~/css/site.css" />
     </environment>
     <environment exclude="Development">
@@ -18,6 +23,17 @@
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+        <script src="~/lib/select2/js/select2.min.js"></script>
+        <script src="~/lib/datatables/js/dataTables.dataTables.min.js"></script>
+        <script src="~/lib/datatables/js/jquery.dataTables.min.js"></script>
+
+        <script src="~/js/app.js" asp-append-version="true"></script>
+        <script src="~/js/analysis.js" asp-append-version="true"></script>
     </environment>
 </head>
 <body>
@@ -55,11 +71,7 @@
         </footer>
     </div>
 
-    <environment include="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
+
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
@@ -77,5 +89,5 @@
     </environment>
 
     @RenderSection("Scripts", required: false)
-</body>
+    </body>
 </html>

@@ -67,7 +67,7 @@ using EasyDataAnalyzer.Models;
             WriteLiteral("\r\n<h2>Імпорт даних</h2>\r\n");
             EndContext();
             BeginContext(69, 1412, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fd496f05466a4fa985d1fb1d3fe7d671", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1fb242e25ec74ec993d42618f085d5ca", async() => {
                 BeginContext(168, 1306, true);
                 WriteLiteral(@"
     <div class=""row"">

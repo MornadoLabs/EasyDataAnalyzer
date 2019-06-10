@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -11,12 +11,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Scripts\analysis.ts" />
+    <None Remove="Scripts\config.ts" />
     <None Remove="Scripts\import.ts" />
-    <None Remove="Scripts\main.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Scripts\analysis.ts" />
+    <Content Include="Scripts\app.ts" />
     <Content Include="Scripts\import.ts" />
+    <Content Include="webpack.config.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,11 +37,28 @@
 
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="wwwroot\build\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="wwwroot\js\import.js" />
-    <None Include="wwwroot\js\import.js.map" />
-  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+    <TypeScriptModuleKind>UMD</TypeScriptModuleKind>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir>D:\Learning\4_course\Diploma\EasyDataAnalyzer\EasyDataAnalyzer\wwwroot\scripts\js</TypeScriptOutDir>
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot>D:\Learning\4_course\Diploma\EasyDataAnalyzer\EasyDataAnalyzer\wwwroot</TypeScriptSourceRoot>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Makes the TypeScript compilation task a no-op -->
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+  </PropertyGroup>
 
 </Project>

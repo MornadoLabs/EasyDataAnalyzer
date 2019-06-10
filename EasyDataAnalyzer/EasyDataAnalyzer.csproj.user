@@ -10,15 +10,21 @@
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
+    <ShowAllFiles>true</ShowAllFiles>
   </PropertyGroup>
+  <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Update="Scripts\import.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <TypeScriptCompile Update="Scripts\main.ts">
+    <TypeScriptCompile Update="Scripts\analysis.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Update="Scripts\app.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
   </ItemGroup>

@@ -19,8 +19,8 @@ namespace EasyDataAnalyzer.Services.Import.ImportStrategies
         public ImportModel ImportData(FileStream dataStream, ImportParametersViewModel parameters)
         {
             var result = new ImportModel();
-            var hssfwb = new HSSFWorkbook(dataStream);
-            var sheet = hssfwb.GetSheetAt(0);
+            var xssfwb = new XSSFWorkbook(dataStream);
+            var sheet = xssfwb.GetSheetAt(0);
             var headers = sheet.GetRow(0);
 
             var errorWb = new XSSFWorkbook();

@@ -4,6 +4,7 @@ using EasyDataAnalyzer.Models.Import;
 using EasyDataAnalyzer.Repositories;
 using EasyDataAnalyzer.Services.Import.ImportStrategies;
 using NPOI.HSSF.UserModel;
+using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -38,8 +39,8 @@ namespace EasyDataAnalyzer.Services.Import
         public List<string> GetImportHeaders(FileStream dataStream)
         {
             var result = new List<string>();
-            var hssfwb = new HSSFWorkbook(dataStream);
-            var sheet = hssfwb.GetSheetAt(0);
+            var xssfwb = new XSSFWorkbook(dataStream);
+            var sheet = xssfwb.GetSheetAt(0);
             var headers = sheet.GetRow(0);
             return headers.Cells.Select(c => c.ToString()).ToList();
         }
@@ -96,7 +97,7 @@ namespace EasyDataAnalyzer.Services.Import
 
             return new ImportResult
             {
-                Result = Enums.OperationResult.Success,
+                Result = OperationResult.Success,
                 ErrorFilePath = parsedImport.ErrorFilePath,
                 Message = $"Імпорт пройшов успішно. Опрацьовано записів: {currentImport.RecordsCount}. З них не розпізнано: {parsedImport.ErrorsCount}"
             };
