@@ -36,3 +36,4 @@ D:\Learning\4_course\Diploma\EasyDataAnalyzer\EasyDataAnalyzer\obj\Debug\netcore
 D:\Learning\4_course\Diploma\EasyDataAnalyzer\EasyDataAnalyzer\obj\Debug\netcoreapp2.1\EasyDataAnalyzer.dll
 D:\Learning\4_course\Diploma\EasyDataAnalyzer\EasyDataAnalyzer\obj\Debug\netcoreapp2.1\EasyDataAnalyzer.pdb
 D:\Learning\4_course\Diploma\EasyDataAnalyzer\EasyDataAnalyzer\obj\Debug\netcoreapp2.1\EasyDataAnalyzer.csproj.CopyComplete
+D:\Learning\4_course\Diploma\EasyDataAnalyzer\EasyDataAnalyzer\obj\Debug\netcoreapp2.1\EasyDataAnalyzer.csprojAssemblyReference.cache

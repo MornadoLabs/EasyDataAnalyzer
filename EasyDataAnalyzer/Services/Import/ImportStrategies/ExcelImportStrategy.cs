@@ -27,11 +27,11 @@ namespace EasyDataAnalyzer.Services.Import.ImportStrategies
             var errorSheet = errorWb.CreateSheet(ImportConstants.ErrorSheetName);
             var errorHeadersRow = errorSheet.CreateRow(0);
 
-            for (int i = 0; i <= headers.LastCellNum; i++)
+            for (int i = 0; i < headers.LastCellNum; i++)
             {
                 errorHeadersRow.CreateCell(i).SetCellValue(headers.GetCell(i).ToString());
             }
-            errorHeadersRow.CreateCell(headers.LastCellNum + 1).SetCellValue(ImportConstants.ErrorHeader);            
+            errorHeadersRow.CreateCell(headers.LastCellNum).SetCellValue(ImportConstants.ErrorHeader);            
             
             for (int i = 1; i <= sheet.LastRowNum; i++)
             {
@@ -45,7 +45,7 @@ namespace EasyDataAnalyzer.Services.Import.ImportStrategies
                 else
                 {
                     var errorRow = errorSheet.CreateRow(errorSheet.LastRowNum + 1);
-                    for (int j = 0; j <= errorHeadersRow.LastCellNum; j++)
+                    for (int j = 0; j < errorHeadersRow.LastCellNum; j++)
                     {
                         var errorHeader = errorHeadersRow.GetCell(j).ToString();
                         var errorCellValue = parsedRow.RowData[errorHeader];
@@ -54,13 +54,13 @@ namespace EasyDataAnalyzer.Services.Import.ImportStrategies
                 }
             }
 
-            if (errorSheet.LastRowNum > 0)
+            if (errorSheet.LastRowNum > -1)
             {
                 var fileExtension = Path.GetExtension(dataStream.Name);
                 var fileName = dataStream.Name.Insert(dataStream.Name.IndexOf(fileExtension), ImportConstants.ErrorFile);
                 var errorFilePath = Path.Combine(CommonConstants.TempFolder, ImportConstants.ErrorFolder, fileName);
                 result.ErrorFilePath = errorFilePath;
-                result.ErrorsCount = errorSheet.LastRowNum + 1;
+                result.ErrorsCount = errorSheet.LastRowNum;
                 using (var errorFile = new FileStream(errorFilePath, FileMode.Create, FileAccess.Write))
                 {
                     errorWb.Write(errorFile);
@@ -73,7 +73,7 @@ namespace EasyDataAnalyzer.Services.Import.ImportStrategies
         private ParseRowResult ParseRow(IRow row, IRow headers, ImportParametersViewModel parameters)
         {
             var parseResult = new ParseRowResult();
-            for (short j = 0; j <= headers.LastCellNum; j++)
+            for (short j = 0; j < headers.LastCellNum; j++)
             {
                 var header = headers.GetCell(j).ToString();
                 var currentValue = row.GetCell(j).ToString();
@@ -108,11 +108,12 @@ namespace EasyDataAnalyzer.Services.Import.ImportStrategies
         }
 
         private ParseCellResult ParseCellValue(
-            string value, 
+            string value,
             ImportParametersModel importParameters,
             ImportHeaderParameters headerParameters)
         {
-            if (importParameters.EmptyValueIsNull && string.IsNullOrWhiteSpace(value))
+            if ((importParameters.EmptyValueIsNull && string.IsNullOrWhiteSpace(value)) 
+                || "null".Equals(value, StringComparison.CurrentCultureIgnoreCase))
             {
                 return new ParseCellResult { Success = true, ResultValue = null };
             }            
@@ -121,12 +122,12 @@ namespace EasyDataAnalyzer.Services.Import.ImportStrategies
             {
                 case ImportDataTypes.Date:
                     {
-                        if (!string.IsNullOrWhiteSpace(importParameters.DataFormat))
+                        if (!string.IsNullOrWhiteSpace(importParameters.DateFormat))
                         {
                             DateTime resultValue;
                             if (DateTime.TryParseExact(
                                 value,
-                                importParameters.DataFormat,
+                                importParameters.DateFormat,
                                 CultureInfo.InvariantCulture,
                                 DateTimeStyles.None,
                                 out resultValue))

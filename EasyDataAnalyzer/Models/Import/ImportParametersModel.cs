@@ -7,7 +7,7 @@ namespace EasyDataAnalyzer.Models.Import
 {
     public class ImportParametersModel
     {
-        public string DataFormat { get; set; }
+        public string DateFormat { get; set; }
         public string NumericSeparator { get; set; }
         public bool EmptyValueIsNull { get; set; }
     }

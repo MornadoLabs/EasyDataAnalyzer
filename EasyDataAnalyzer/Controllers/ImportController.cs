@@ -11,6 +11,8 @@ using EasyDataAnalyzer.Services.Import;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace EasyDataAnalyzer.Controllers
 {
@@ -49,7 +51,7 @@ namespace EasyDataAnalyzer.Controllers
                     Headers = headers,
                     Parameters = new ImportParametersModel
                     {
-                        DataFormat = parameters.DataFormat,
+                        DateFormat = parameters.DataFormat,
                         NumericSeparator = parameters.NumericSeparator,
                         EmptyValueIsNull = parameters.EmptyValueIsNull
                     },
@@ -61,8 +63,10 @@ namespace EasyDataAnalyzer.Controllers
 
         [Authorize]
         [HttpPost]
-        public JsonResult ProcessImport(ImportParametersViewModel parameters)
+        public JsonResult ProcessImport(string param)
         {
+            var parameters = JsonConvert.DeserializeObject<ImportParametersViewModel>(param);
+
             try
             {
                 if (!System.IO.File.Exists(parameters.TempFilePath))

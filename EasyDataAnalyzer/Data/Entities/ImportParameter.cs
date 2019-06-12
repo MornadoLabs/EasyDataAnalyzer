@@ -16,7 +16,6 @@ namespace EasyDataAnalyzer.Data.Entities
         [Required]
         public string ParameterName { get; set; }
 
-        [Required]
         public string ParameterValue { get; set; }
     }
 }

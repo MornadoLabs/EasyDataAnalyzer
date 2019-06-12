@@ -2,6 +2,7 @@
 
 module.exports = {
     entry: { app: './Scripts/app.ts', import: './Scripts/import.ts', analysis: './Scripts/analysis.ts' },
+    devtool: 'source-map',
     module: {
         rules: [
             {

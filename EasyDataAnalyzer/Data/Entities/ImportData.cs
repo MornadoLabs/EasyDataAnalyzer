@@ -16,7 +16,6 @@ namespace EasyDataAnalyzer.Data.Entities
         [Required]
         public long RowNumber { get; set; }
 
-        [Required]
         public string Value { get; set; }
     }
 }

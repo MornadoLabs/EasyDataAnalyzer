@@ -39,3 +39,11 @@ body {
 .row {
     margin-bottom: 10px;
 }
+
+.full-width {
+    width: 100%;
+}
+
+.width-50 {
+    width: 50%;
+}

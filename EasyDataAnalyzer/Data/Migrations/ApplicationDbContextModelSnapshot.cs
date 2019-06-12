@@ -93,8 +93,7 @@ namespace EasyDataAnalyzer.Data.Migrations
 
                     b.Property<long>("RowNumber");
 
-                    b.Property<string>("Value")
-                        .IsRequired();
+                    b.Property<string>("Value");
 
                     b.HasKey("Id");
 
@@ -140,8 +139,7 @@ namespace EasyDataAnalyzer.Data.Migrations
                     b.Property<string>("ParameterName")
                         .IsRequired();
 
-                    b.Property<string>("ParameterValue")
-                        .IsRequired();
+                    b.Property<string>("ParameterValue");
 
                     b.HasKey("Id");
 

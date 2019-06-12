@@ -117,13 +117,13 @@ namespace EasyDataAnalyzer.Services.Import
         {
             var result = new List<ImportParameter>();
 
-            if (!string.IsNullOrWhiteSpace(parameters.DataFormat))
+            if (!string.IsNullOrWhiteSpace(parameters.DateFormat))
             {
                 result.Add(new ImportParameter
                 {
                     Import = import,
                     ParameterName = ImportParameters.DataTimeFormat.ToString(),
-                    ParameterValue = parameters.DataFormat
+                    ParameterValue = parameters.DateFormat
                 });
             }
 

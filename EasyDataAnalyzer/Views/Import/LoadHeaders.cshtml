@@ -8,7 +8,7 @@
 <div class="row">
     <div class="col-md-12">
         @Html.HiddenFor(m => m.TempFilePath)
-        @Html.HiddenFor(m => m.Parameters.DataFormat)
+        @Html.HiddenFor(m => m.Parameters.DateFormat)
         @Html.HiddenFor(m => m.Parameters.NumericSeparator)
         @Html.HiddenFor(m => m.Parameters.EmptyValueIsNull)
         @(Html.HiddenFor(m => m.Headers.Count))
@@ -24,7 +24,7 @@
                 @for (int i = 0; i < Model.Headers.Count; i++)
                 {
                     <tr>
-                        <td>@Model.Headers[i]</td>
+                        <td><p id=@($"header{i}")>@Model.Headers[i]</p></td>
                         <td>@Html.DropDownList($"dataTypeHeader{i}", Model.DataTypes.Select(dt => new SelectListItem { Text = dt.ToString(), Value = ((int)dt).ToString() }), new { @class = "selectDropDown" })</td>
                         <td>@Html.DropDownList($"priorityHeader{i}", Model.PriorityLevels.Select(p => new SelectListItem { Text = p.ToString(), Value = ((int)p).ToString() }), new { @class = "selectDropDown" })</td>
                     </tr>
@@ -35,7 +35,7 @@
 </div>
 <div class="row">
     <div class="col-md-4">
-        <button class="btn btn-default" id="submitButton">OK</button>
+        <button class="btn btn-default" id="submitButton">Готово</button>
     </div>
 </div>
 
