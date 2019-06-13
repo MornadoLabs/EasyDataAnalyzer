@@ -1,4 +1,5 @@
-﻿using EasyDataAnalyzer.Enums;
+﻿using EasyDataAnalyzer.Data.Entities;
+using EasyDataAnalyzer.Enums;
 using EasyDataAnalyzer.Models.Analysis;
 using EasyDataAnalyzer.Repositories;
 using EasyDataAnalyzer.Services.Analysis.AnalysisStrategies;
@@ -23,10 +24,25 @@ namespace EasyDataAnalyzer.Services.Analysis
             AnalysisStrategy = new ClusteringStrategy();
         }
 
+        public List<UserImport> LoadUserImports(string userId)
+        {
+            if (string.IsNullOrWhiteSpace(userId))
+            {
+                return new List<UserImport>();
+            }
+
+            return AnalysisRepository.LoadUserImports(userId);
+        }
+
+        public List<ImportHeader> LoadImportHeaders(List<long> importIds)
+        {
+            return AnalysisRepository.LoadImportHeaders(importIds);
+        }
+
         public IAnalysisResult AnalyzeData(AnalysisParametersModel parameters)
         {
             SetAnalysisStrategy(parameters.AnalysisMethod);
-            var data = ImportService.LoadDataByImportId(parameters.ImportId);
+            var data = ImportService.LoadDataByImportId(parameters.ImportIds);
             var headers = ImportService.LoadImportHeadersById(parameters.MainHeadersId);
             return AnalysisStrategy.AnalyzeData(headers, data, parameters.Args);
         }

@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <None Remove="Scripts\analysis.ts" />
+    <None Remove="Scripts\analyzeSettings.ts" />
     <None Remove="Scripts\config.ts" />
     <None Remove="Scripts\import.ts" />
   </ItemGroup>

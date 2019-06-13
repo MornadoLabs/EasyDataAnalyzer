@@ -9,7 +9,7 @@ namespace EasyDataAnalyzer.Models.Analysis
     public class AnalysisParametersModel
     {
         public AnalysisMethods AnalysisMethod { get; set; }
-        public List<long> ImportId { get; set; }
+        public List<long> ImportIds { get; set; }
         public List<int> MainHeadersId { get; set; }
         public List<object> Args { get; set; }
     }

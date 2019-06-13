@@ -1,7 +1,12 @@
 ﻿const path = require('path');
 
 module.exports = {
-    entry: { app: './Scripts/app.ts', import: './Scripts/import.ts', analysis: './Scripts/analysis.ts' },
+    entry: {
+        app: './Scripts/app.ts',
+        import: './Scripts/import.ts',
+        analysis: './Scripts/analysis.ts',
+        analyzeSettings: './Scripts/analyzeSettings.ts'
+    },
     devtool: 'source-map',
     module: {
         rules: [

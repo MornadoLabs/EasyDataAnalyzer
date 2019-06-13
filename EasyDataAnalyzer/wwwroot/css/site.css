@@ -47,3 +47,15 @@ body {
 .width-50 {
     width: 50%;
 }
+
+.display-none {
+    display: none!important;
+}
+
+#startLogo {
+    margin-top: 80px;
+}
+
+#navBar {
+    background: #2D51A3;
+}

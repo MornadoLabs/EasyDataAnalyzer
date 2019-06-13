@@ -15,7 +15,12 @@ namespace EasyDataAnalyzer.Data.Entities
         public IdentityUser User { get; set; }
 
         [Required]
+        public string FileName { get; set; }
+
+        [Required]
         public long RecordsCount { get; set; }
+
+        public long ErrorsCount { get; set; }
 
         public DateTime ImportDate { get; set; }
     }

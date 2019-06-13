@@ -59,7 +59,9 @@ namespace EasyDataAnalyzer.Services.Import
             var currentImport = ImportRepository.SaveImport(new UserImport
             {
                 User = user,
+                FileName = new FileInfo(dataStream.Name).Name,
                 RecordsCount = parsedImport.Data.Count + parsedImport.ErrorsCount,
+                ErrorsCount = parsedImport.ErrorsCount,
                 ImportDate = DateTime.Now
             });
 
@@ -99,7 +101,7 @@ namespace EasyDataAnalyzer.Services.Import
             {
                 Result = OperationResult.Success,
                 ErrorFilePath = parsedImport.ErrorFilePath,
-                Message = $"Імпорт пройшов успішно. Опрацьовано записів: {currentImport.RecordsCount}. З них не розпізнано: {parsedImport.ErrorsCount}"
+                Message = $"Опрацьовано записів: {currentImport.RecordsCount}. З них не розпізнано: {parsedImport.ErrorsCount}"
             };
         }
 

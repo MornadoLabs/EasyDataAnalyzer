@@ -19,5 +19,15 @@ namespace EasyDataAnalyzer.Repositories
             DbContext.AnalysisData.AddRange(data);
             DbContext.SaveChanges();
         }
+
+        public List<UserImport> LoadUserImports(string userId)
+        {
+            return DbContext.UserImports.Where(ui => userId.Equals(ui.User.Id)).ToList();
+        }
+
+        public List<ImportHeader> LoadImportHeaders(List<long> importIds)
+        {
+            return DbContext.ImportHeaders.Where(ih => importIds.Contains(ih.Import.Id)).ToList();
+        }
     }
 }

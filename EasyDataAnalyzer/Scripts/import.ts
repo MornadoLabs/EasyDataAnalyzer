@@ -27,7 +27,8 @@ namespace EasyDataAnalyzer.Import {
         };
 
         private Urls = {
-            ProcessImport: "Import/ProcessImport"
+            ProcessImport: "Import/ProcessImport",
+            LoadErrorFile: "Import/LoadErrorFile"
         };
 
         constructor() {
@@ -45,7 +46,7 @@ namespace EasyDataAnalyzer.Import {
 
         private initButtons(): void {
             let self = this;
-            $('#' + this.ElementIDs.OkButton).click(function (e) {
+            $('#' + this.ElementIDs.OkButton).off('click').click(function (e) {
                 let recordsCount: number = <number>$('#' + self.ElementIDs.HeadersCount).val();
                 let tempFile = $('#' + self.ElementIDs.TempFilePath).val().toString();
                 let parameters = {
@@ -77,7 +78,39 @@ namespace EasyDataAnalyzer.Import {
                         param: JSON.stringify(data)
                     },
                     success: function (response) {
-                        swal('Success');
+                        if (response) {
+                            let success: boolean = response.result == OperationResult.Success;
+                            swal({
+                                title: success ? "Імпорт пройшов успішно!" : "Виникли помилки під час імпорту!",
+                                text: response.message,
+                                icon: success ? "success": "warning",
+                                buttons: {
+                                    load: {
+                                        text: "Завантажити файл помилок",
+                                        value: "load",
+                                    },
+                                    OK: true,
+                                },
+                            }).then((value: any) => {
+                                if (value == "load") {
+                                    try {
+                                        $.post(self.Urls.LoadErrorFile, { path: response.errorFilePath });
+                                        /*$.ajax({
+                                            method: 'POST',
+                                            url: self.Urls.LoadErrorFile,
+                                            data: { path: response.errorFilePath },
+                                            success: function (errorFile: File) {
+                                                console.log(errorFile.name);
+                                            }
+                                        });*/
+                                        //window.location = response.errorFilePath;                                        
+                                    }
+                                    catch (ex) {
+                                        console.log(ex);
+                                    }
+                                }
+                            });
+                        }
                     }
                 });
             });
@@ -102,6 +135,13 @@ namespace EasyDataAnalyzer.Import {
         public DateFormat: string;
         public NumericSeparator: string;
         public EmptyValueIsNull: boolean;
+    }
+
+    enum OperationResult {
+        Success = 1,
+        Warning = 2,
+        Error = 3,
+        Info = 4
     }
 
     export let importService = new ImportService();

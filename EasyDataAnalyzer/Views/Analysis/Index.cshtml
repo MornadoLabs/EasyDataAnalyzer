@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model EasyDataAnalyzer.Models.Analysis.AnalysisSettingsViewModel
+<h2>Аналіз даних</h2>
+
+<h3>Метод аналізу</h3>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="analysisMethods">Оберіть метод аналізу</label>
+            </div>
+            <div class="col-md-4">
+                @Html.DropDownList($"analysisMethod", Model.AnalysisMethods.Select(am => new SelectListItem { Text = am.ToString(), Value = ((int)am).ToString() }), new { @class = "selectDropDown" })
+            </div>
+        </div>
+
+        <div id="associationRulesParams" class="row display-none">
+            <div class="col-md-4">
+                <label for="associationRulesConfidence">Вкажіть рівень значущості</label>
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.AssociationRulesConfidence, new { @class = "width-50" })
+            </div>
+        </div>
+
+        <div id="clusteringParams" class="row display-none">
+            <div class="col-md-4">
+                <label for="clustersCount">Вкажіть кількість кластерів</label>
+            </div>
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.ClustersCount, new { @class = "width-50" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3>Дані для аналізу</h3>
+<div class="row">
+    <div class="col-md-12">
+        @Html.HiddenFor(m => m.Imports.Count)
+        <table id="analysisDataTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Файл</th>
+                    <th>Кількість записів</th>
+                    <th>Кількість помилок</th>
+                    <th>Дата імпорту</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Imports.Count; i++)
+                {
+                    <tr>
+                        <td><p id=@($"import{i}")>@Model.Imports[i].Id</p></td>
+                        <td><p id=@($"fileName{i}")>@Model.Imports[i].FileName</p></td>
+                        <td><p id=@($"recordsCount{i}")>@Model.Imports[i].RecordsCount</p></td>
+                        <td><p id=@($"errorsCount{i}")>@Model.Imports[i].ErrorsCount</p></td>
+                        <td><p id=@($"importDate{i}")>@Model.Imports[i].ImportDate</p></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <input type="submit" id="okButton" class="btn btn-default" value="Аналізувати" />
+    </div>
+</div>
+
+<environment include="Development">
+    <script src="~/js/analysis.js" asp-append-version="true"></script>
+</environment>

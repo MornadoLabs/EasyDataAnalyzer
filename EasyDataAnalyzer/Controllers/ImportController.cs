@@ -84,5 +84,20 @@ namespace EasyDataAnalyzer.Controllers
                 return Json(new ImportResult { Result = OperationResult.Error, Message = ex.Message });
             }
         }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<ActionResult> LoadErrorFile(string path)
+        {
+            var fileInfo = new FileInfo(path);
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(path, FileMode.Open))
+            {
+                await stream.CopyToAsync(memory);
+            }
+            memory.Position = 0;
+            return File(memory, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileInfo.Name);
+        }
+
     }
 }

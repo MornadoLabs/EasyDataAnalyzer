@@ -154,6 +154,11 @@ namespace EasyDataAnalyzer.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<long>("ErrorsCount");
+
+                    b.Property<string>("FileName")
+                        .IsRequired();
+
                     b.Property<DateTime>("ImportDate");
 
                     b.Property<long>("RecordsCount");
