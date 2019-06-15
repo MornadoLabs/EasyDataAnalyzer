@@ -72,7 +72,8 @@ namespace EasyDataAnalyzer.Analysis {
                     ClustersCount: $('#' + self.ElementIDs.ClustersCount).val(),
                     ImportIds: importIds
                 }
-                window.location.href = self.Urls.LoadSettings + '?settings=' + JSON.stringify(data);
+                window.location.replace(self.Urls.LoadSettings + '?settings=' + JSON.stringify(data));
+                //window.location.href = self.Urls.LoadSettings + '?settings=' + JSON.stringify(data);
             });
         }
 

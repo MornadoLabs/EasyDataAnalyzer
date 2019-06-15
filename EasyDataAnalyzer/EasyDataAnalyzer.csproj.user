@@ -11,7 +11,13 @@
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
     <ShowAllFiles>true</ShowAllFiles>
+    <NameOfLastUsedPublishProfile>FolderProfile</NameOfLastUsedPublishProfile>
   </PropertyGroup>
+  <ItemGroup>
+    <TypeScriptCompile Update="Scripts\regressionResults.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+  </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Update="Scripts\analyzeSettings.ts">
       <SubType>Code</SubType>

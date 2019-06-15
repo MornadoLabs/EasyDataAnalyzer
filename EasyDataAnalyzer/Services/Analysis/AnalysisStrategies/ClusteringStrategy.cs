@@ -71,6 +71,11 @@ namespace EasyDataAnalyzer.Services.Analysis.AnalysisStrategies
             };
         }
 
+        public IChartResults LoadChartsData(List<ImportHeader> headers, List<ImportData> data, IAnalysisResult analysisResult)
+        {
+            throw new NotImplementedException();
+        }
+
         private List<Point> GenerateCenters(int clustersCount, double minX, double maxX, double minY, double maxY)
         {
             var random = new Random();
@@ -128,5 +133,6 @@ namespace EasyDataAnalyzer.Services.Analysis.AnalysisStrategies
         {
             return new Point(clusterPoints.Sum(p => p.X) / clusterPoints.Count, clusterPoints.Sum(p => p.Y) / clusterPoints.Count);
         }
+
     }
 }

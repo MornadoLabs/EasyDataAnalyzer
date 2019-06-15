@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "sweetalert@2.1.2",
+      "destination": "wwwroot/lib/sweetalert/"
+    },
+    {
+      "library": "select2@4.0.7",
+      "destination": "wwwroot/lib/select2/"
+    },
+    {
+      "library": "datatables@1.10.19",
+      "destination": "wwwroot/lib/datatables/"
+    },
+    {
+      "library": "require.js@2.3.6",
+      "destination": "wwwroot/lib/require.js/"
+    }
+  ]
+}

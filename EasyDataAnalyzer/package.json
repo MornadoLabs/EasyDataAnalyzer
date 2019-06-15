@@ -12,10 +12,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/chart.js": "^2.7.53",
     "@types/datatables.net": "^1.10.17",
     "@types/jquery": "^3.3.29",
     "@types/select2": "^4.0.48",
     "@types/sweetalert": "^2.0.4",
+    "chart.js": "^2.8.0",
     "datatables": "^1.10.18",
     "select2": "^4.0.7",
     "sweetalert": "^2.1.2"

@@ -5,7 +5,8 @@ module.exports = {
         app: './Scripts/app.ts',
         import: './Scripts/import.ts',
         analysis: './Scripts/analysis.ts',
-        analyzeSettings: './Scripts/analyzeSettings.ts'
+        analyzeSettings: './Scripts/analyzeSettings.ts',
+        regressionResults: './Scripts/regressionResults.ts'
     },
     devtool: 'source-map',
     module: {

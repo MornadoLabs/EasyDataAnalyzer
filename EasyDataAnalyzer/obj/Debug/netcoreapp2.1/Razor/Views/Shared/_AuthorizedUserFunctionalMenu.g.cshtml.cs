@@ -57,7 +57,7 @@ using EasyDataAnalyzer.Models;
             WriteLiteral("\r\n<li>");
             EndContext();
             BeginContext(6, 74, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e0e50fe9650b47949537fb910cd7a24c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ec33e11274164b0dab30883774583e68", async() => {
                 BeginContext(64, 12, true);
                 WriteLiteral("Імпорт даних");
                 EndContext();
@@ -83,7 +83,7 @@ using EasyDataAnalyzer.Models;
             WriteLiteral("</li>\r\n<li>");
             EndContext();
             BeginContext(91, 76, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b9b24f4c75a943c9ba714162c95d90bb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e446b75341db4c349265ccdd1f8fdd87", async() => {
                 BeginContext(151, 12, true);
                 WriteLiteral("Аналіз даних");
                 EndContext();

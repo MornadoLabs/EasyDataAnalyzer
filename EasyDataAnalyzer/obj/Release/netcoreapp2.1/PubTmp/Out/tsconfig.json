@@ -1,0 +1,19 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "allowJs": true,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "target": "es6",
+    "module": "es6",
+    "outDir": "wwwroot/js/"
+  },
+  "exclude": [
+    "node_modules",
+    "wwwroot"
+  ]
+}

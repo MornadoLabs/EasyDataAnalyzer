@@ -36,24 +36,9 @@ namespace EasyDataAnalyzer.Services.Analysis.AnalysisStrategies
             };
         }
 
-        private Dictionary<string, Dictionary<string, bool>> NormalizeData(ImportHeader idHeader, List<ImportHeader> headers, List<ImportData> data)
+        public IChartResults LoadChartsData(List<ImportHeader> headers, List<ImportData> data, IAnalysisResult analysisResult)
         {
-            var normalizedData = new Dictionary<string, Dictionary<string, bool>>();
-            var transactionIds = data.Where(d => d.Header.Id == idHeader.Id).Distinct().ToList();
-            var elementsHeaders = headers.Where(h => h.Id != idHeader.Id).Distinct().ToList();
-
-            foreach (var transaction in transactionIds)
-            {
-                var dataRow = new Dictionary<string, bool>();
-                foreach (var header in elementsHeaders)
-                {
-                    var valueExists = data.FirstOrDefault(d => d.Header.Id == header.Id && d.RowNumber == transaction.RowNumber);
-                    dataRow.Add(header.HeaderName, valueExists != null);
-                }
-                normalizedData.Add(transaction.Value, dataRow);
-            }
-
-            return normalizedData;
+            return null;
         }
 
         private SortedSet<string>[] GetDataSet(List<ImportData> data)

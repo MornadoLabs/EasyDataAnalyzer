@@ -44,7 +44,24 @@ namespace EasyDataAnalyzer.Services.Analysis
             SetAnalysisStrategy(parameters.AnalysisMethod);
             var data = ImportService.LoadDataByImportId(parameters.ImportIds);
             var headers = ImportService.LoadImportHeadersById(parameters.MainHeadersId);
+
+            var analysisHistory = new AnalysisHistory { AnalysisDate = DateTime.Now };
+            var analysisData = data.GroupBy(d => d.Header.Import).Select(g => new AnalysisData
+            {
+                AnalysisHistory = analysisHistory,
+                Import = g.Key
+            }).ToList();
+
+            AnalysisRepository.SaveAnalysis(analysisHistory, analysisData);
+
             return AnalysisStrategy.AnalyzeData(headers, data, parameters.Args);
+        }
+
+        public IChartResults LoadChartsData(AnalysisParametersModel parameters, IAnalysisResult analysisResult)
+        {
+            var data = ImportService.LoadDataByImportId(parameters.ImportIds);
+            var headers = ImportService.LoadImportHeadersById(parameters.MainHeadersId);
+            return AnalysisStrategy.LoadChartsData(headers, data, analysisResult);
         }
 
         private void SetAnalysisStrategy(AnalysisMethods analysisMethod)

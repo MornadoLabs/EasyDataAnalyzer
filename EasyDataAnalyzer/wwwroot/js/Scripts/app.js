@@ -1,0 +1,7 @@
+var EasyDataAnalyzer;
+(function (EasyDataAnalyzer) {
+    class CommonService {
+    }
+    EasyDataAnalyzer.common = new CommonService();
+})(EasyDataAnalyzer || (EasyDataAnalyzer = {}));
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vU2NyaXB0cy9hcHAudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0EsSUFBVSxnQkFBZ0IsQ0FPekI7QUFQRCxXQUFVLGdCQUFnQjtJQUV0QixNQUFNLGFBQWE7S0FFbEI7SUFFVSx1QkFBTSxHQUFHLElBQUksYUFBYSxFQUFFLENBQUM7QUFDNUMsQ0FBQyxFQVBTLGdCQUFnQixLQUFoQixnQkFBZ0IsUUFPekIiLCJzb3VyY2VzQ29udGVudCI6WyJcclxubmFtZXNwYWNlIEVhc3lEYXRhQW5hbHl6ZXIgeyAgICBcclxuICAgIFxyXG4gICAgY2xhc3MgQ29tbW9uU2VydmljZSB7XHJcblxyXG4gICAgfVxyXG5cclxuICAgIGV4cG9ydCBsZXQgY29tbW9uID0gbmV3IENvbW1vblNlcnZpY2UoKTtcclxufSJdfQ==

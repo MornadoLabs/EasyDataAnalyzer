@@ -11,5 +11,6 @@ namespace EasyDataAnalyzer.Services.Analysis.AnalysisStrategies
     public interface IAnalysisStrategy
     {
         IAnalysisResult AnalyzeData(List<ImportHeader> headers, List<ImportData> data, List<object> args);
+        IChartResults LoadChartsData(List<ImportHeader> headers, List<ImportData> data, IAnalysisResult analysisResult);
     }
 }

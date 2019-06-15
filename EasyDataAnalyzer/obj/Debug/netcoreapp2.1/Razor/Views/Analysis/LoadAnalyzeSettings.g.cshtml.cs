@@ -87,12 +87,12 @@ using EasyDataAnalyzer.Models;
             WriteLiteral("\r\n    </div>\r\n</div>\r\n<div class=\"row\">\r\n    <div class=\"col-md-4\">\r\n        <button id=\"okButton\" class=\"btn btn-default\">OK</button>\r\n    </div>\r\n</div>\r\n\r\n");
             EndContext();
             BeginContext(878, 130, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1b720639f2b7419093b0f6de026fa995", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "816bb5bb5b7a41afb07b24b2cbeb0060", async() => {
                 BeginContext(913, 6, true);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(919, 73, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a94c81b1e5af461d8c317ae0b31d3b43", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "550d023e282445b5bab34a73ad9d2352", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

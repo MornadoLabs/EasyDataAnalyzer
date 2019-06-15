@@ -17,6 +17,7 @@ namespace EasyDataAnalyzer.Controllers
         private static class AnalysisParameters
         {
             public static AnalysisParametersModel Parameters { get; set; } = new AnalysisParametersModel();
+            public static IAnalysisResult AnalysisResult { get; set; }
             public static void SetAdditionalArgs(AnalysisSettingsModel analysisSettings)
             {
                 if (analysisSettings.AnalysisMethod == AnalysisMethods.AssociationRulesSearch)
@@ -65,19 +66,25 @@ namespace EasyDataAnalyzer.Controllers
         public IActionResult AnalyzeData(int xField, int yField)
         {
             AnalysisParameters.Parameters.MainHeadersId = new List<int> { xField, yField };
-            var analysisResult = AnalysisService.AnalyzeData(AnalysisParameters.Parameters);
+            AnalysisParameters.AnalysisResult = AnalysisService.AnalyzeData(AnalysisParameters.Parameters);
 
-            switch (analysisResult.AnalysisMethod)
+            switch (AnalysisParameters.AnalysisResult.AnalysisMethod)
             {
                 case AnalysisMethods.Regression:
-                    return View(analysisResult);
+                    return View("RegressionResultView", AnalysisParameters.AnalysisResult);
                 case AnalysisMethods.AssociationRulesSearch:
-                    return View(analysisResult);
+                    return View(AnalysisParameters.AnalysisResult);
                 case AnalysisMethods.Clustering:
-                    return View(analysisResult);
+                    return View(AnalysisParameters.AnalysisResult);
                 default:
                     throw new Exception("Невідомий метод аналізу.");
             }
+        }
+
+        [Authorize]
+        public JsonResult LoadCharts()
+        {
+            return Json(AnalysisService.LoadChartsData(AnalysisParameters.Parameters, AnalysisParameters.AnalysisResult));
         }
     }
 }

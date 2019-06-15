@@ -12,5 +12,6 @@ namespace EasyDataAnalyzer.Services.Analysis
         List<UserImport> LoadUserImports(string userId);
         List<ImportHeader> LoadImportHeaders(List<long> importIds);
         IAnalysisResult AnalyzeData(AnalysisParametersModel parameters);
+        IChartResults LoadChartsData(AnalysisParametersModel parameters, IAnalysisResult analysisResult);
     }
 }

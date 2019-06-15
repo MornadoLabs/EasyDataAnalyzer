@@ -14,7 +14,7 @@ namespace EasyDataAnalyzer.Analysis {
         };
 
         private Urls = {
-            AnalyzeData: "Analysis/AnalyzeData",
+            AnalyzeData: "AnalyzeData",
         };
 
         constructor() {
@@ -34,7 +34,8 @@ namespace EasyDataAnalyzer.Analysis {
             $('#' + self.ElementIDs.OkButton).off('click').click(function () {
                 let xField = <number>$('#' + self.ElementIDs.X_Field).val();
                 let yField = <number>$('#' + self.ElementIDs.Y_Field).val();
-                window.location.href = self.Urls.AnalyzeData + '?xField=' + xField + '&yField=' + yField;
+                window.location.replace(self.Urls.AnalyzeData + '?xField=' + xField + '&yField=' + yField);
+                //window.location.href = self.Urls.AnalyzeData + '?xField=' + xField + '&yField=' + yField;
             });
         }
 

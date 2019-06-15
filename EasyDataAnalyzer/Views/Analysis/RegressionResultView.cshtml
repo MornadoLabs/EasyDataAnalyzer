@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "RegressionResultView";
+}
+@model EasyDataAnalyzer.Models.Analysis.RegressionResult
+<h2>Результати аналізу</h2>
+
+<div class="row">
+    <div class="col-md-12"><b>Регресія Y на X</b></div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        y = 𝛼 + 𝛽 * x
+        <br />
+        y = @Html.DisplayFor(model => model.Alpha) + @Html.DisplayFor(model => model.Beta) * x
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <canvas class="small-chart" id="YToXChart" width="200" height="200"></canvas>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12"><b>Регресія X на Y</b></div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        x = 𝛼′ + 𝛽′ * y
+        <br />
+        x = @Html.DisplayFor(model => model.NotAlpha) + @Html.DisplayFor(model => model.NotBeta) * y
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <canvas class="small-chart" id="XToYChart" width="200" height="200"></canvas>
+    </div>
+</div>
+
+<environment include="Development">
+    <script src="~/js/regressionResults.js" asp-append-version="true"></script>
+</environment>
