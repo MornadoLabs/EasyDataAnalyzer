@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "LoadImportHistory";
+}
+
+@model EasyDataAnalyzer.Models.Import.ImportHistoryViewModel
+<h2>Історія імпорту</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        @Html.HiddenFor(m => m.Imports.Count)
+        <table id="importHistoryDataTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Файл</th>
+                    <th>Кількість записів</th>
+                    <th>Кількість помилок</th>
+                    <th>Дата імпорту</th>
+                    <th>Параметри імпорту</th>
+                    <th>Дані імпорту</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.Imports.Count; i++)
+                {
+                    <tr>
+                        <td><p id=@($"import{i}")>@Model.Imports[i].Id</p></td>
+                        <td><p id=@($"fileName{i}")>@Model.Imports[i].FileName</p></td>
+                        <td><p id=@($"recordsCount{i}")>@Model.Imports[i].RecordsCount</p></td>
+                        <td><p id=@($"errorsCount{i}")>@Model.Imports[i].ErrorsCount</p></td>
+                        <td><p id=@($"importDate{i}")>@Model.Imports[i].ImportDate</p></td>
+                        <td><button id=@($"loadParams{i}") class="btn btn-info">Параметри</button></td>
+                        <td><button id=@($"loadData{i}") class="btn btn-info">Дані</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<environment include="Development">
+    <script src="~/js/importHistory.js" asp-append-version="true"></script>
+</environment>
+

@@ -11,15 +11,17 @@ namespace EasyDataAnalyzer.Data.Entities
         public int Id { get; set; }
 
         [Required]
-        public UserImport Import { get; set; }
+        public virtual UserImport Import { get; set; }
 
         [Required]
         public string HeaderName { get; set; }
 
         [Required]
-        public DataType DataType { get; set; }
+        public virtual DataType DataType { get; set; }
 
         [Required]
-        public DataPriorityLevel PriorityLevel { get; set; }
+        public virtual DataPriorityLevel PriorityLevel { get; set; }
+
+        public virtual ICollection<ImportData> ImportDatas { get; set; }
     }
 }

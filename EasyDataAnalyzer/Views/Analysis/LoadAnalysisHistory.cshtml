@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "LoadAnalysisHistory";
+}
+
+@model EasyDataAnalyzer.Models.Analysis.AnalysisHistoryViewModel
+<h2>Історія аналізу</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        @Html.HiddenFor(m => m.AnalysisHistories.Count)
+        <table id="analysisHistoryDataTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Дата аналізу</th>
+                    <th>Дані аналізу</th>
+                    <th>Результати аналізу</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.AnalysisHistories.Count; i++)
+                {
+                    <tr>
+                        <td><p id=@($"analysis{i}")>@Model.AnalysisHistories[i].Id</p></td>
+                        <td><p id=@($"analysisDate{i}")>@Model.AnalysisHistories[i].AnalysisDate</p></td>
+                        <td><button id=@($"loadData{i}") class="btn btn-info">Дані</button></td>
+                        <td><button id=@($"loadResults{i}") class="btn btn-info">Результати</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<environment include="Development">
+    <script src="~/js/analysisHistory.js" asp-append-version="true"></script>
+</environment>
+

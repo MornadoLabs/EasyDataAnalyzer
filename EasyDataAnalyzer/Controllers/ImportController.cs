@@ -16,6 +16,7 @@ using Newtonsoft.Json.Linq;
 
 namespace EasyDataAnalyzer.Controllers
 {
+    [Authorize]
     public class ImportController : Controller
     {
         private IImportService ImportService { get; set; }
@@ -31,7 +32,6 @@ namespace EasyDataAnalyzer.Controllers
             return View();
         }
 
-        [Authorize]
         [HttpPost("UploadFiles")]
         public async Task<IActionResult> LoadHeaders(InitImportModel parameters)
         {
@@ -61,7 +61,6 @@ namespace EasyDataAnalyzer.Controllers
             }
         }
 
-        [Authorize]
         [HttpPost]
         public JsonResult ProcessImport(string param)
         {
@@ -85,7 +84,6 @@ namespace EasyDataAnalyzer.Controllers
             }
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<ActionResult> LoadErrorFile(string path)
         {
@@ -97,6 +95,15 @@ namespace EasyDataAnalyzer.Controllers
             }
             memory.Position = 0;
             return File(memory, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", fileInfo.Name);
+        }
+
+        [HttpGet]
+        public ActionResult LoadImportHistory()
+        {
+            return View(new ImportHistoryViewModel
+            {
+                Imports = ImportService.LoadUserImports(User.GetUserID())
+            });
         }
 
     }

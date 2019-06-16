@@ -11,5 +11,7 @@ namespace EasyDataAnalyzer.Data.Entities
     {
         public long Id { get; set; }        
         public DateTime AnalysisDate { get; set; }
+
+        public virtual ICollection<AnalysisData> AnalysisDatas { get; set; }
     }
 }

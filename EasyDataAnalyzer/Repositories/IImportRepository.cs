@@ -14,6 +14,7 @@ namespace EasyDataAnalyzer.Repositories
         void SaveImportData(List<ImportData> data);
         DataType LoadDataTypeById(int typeId);
         DataPriorityLevel LoadPriorityLevelByPriority(int priority);
+        List<UserImport> LoadUserImports(string userId);
         List<ImportHeader> LoadImportHeadersByImportId(long importId);
         List<ImportHeader> LoadImportHeadersById(List<int> headerIds);
         List<ImportData> LoadDataByImportId(List<long> importIds);

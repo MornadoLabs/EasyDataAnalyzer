@@ -11,7 +11,7 @@ namespace EasyDataAnalyzer.Data.Entities
         public int Id { get; set; }
 
         [Required]
-        public UserImport Import { get; set; }
+        public virtual UserImport Import { get; set; }
 
         [Required]
         public string ParameterName { get; set; }

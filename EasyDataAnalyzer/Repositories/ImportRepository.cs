@@ -48,6 +48,11 @@ namespace EasyDataAnalyzer.Repositories
         {
             return DbContext.DataPriorityLevels.FirstOrDefault(pl => pl.Priority == priority);
         }
+        
+        public List<UserImport> LoadUserImports(string userId)
+        {
+            return DbContext.UserImports.Where(ui => userId.Equals(ui.User.Id)).ToList();
+        }
 
         public List<ImportHeader> LoadImportHeadersByImportId(long importId)
         {

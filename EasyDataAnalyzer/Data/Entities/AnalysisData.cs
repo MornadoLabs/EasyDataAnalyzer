@@ -11,9 +11,9 @@ namespace EasyDataAnalyzer.Data.Entities
         public long Id { get; set; }
 
         [Required]
-        public AnalysisHistory AnalysisHistory { get; set; }
+        public virtual AnalysisHistory AnalysisHistory { get; set; }
 
         [Required]
-        public UserImport Import { get; set; }
+        public virtual UserImport Import { get; set; }
     }
 }

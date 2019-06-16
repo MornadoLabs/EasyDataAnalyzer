@@ -12,7 +12,7 @@ namespace EasyDataAnalyzer.Data.Entities
         public long Id { get; set; }
 
         [Required]
-        public IdentityUser User { get; set; }
+        public virtual IdentityUser User { get; set; }
 
         [Required]
         public string FileName { get; set; }
@@ -23,5 +23,9 @@ namespace EasyDataAnalyzer.Data.Entities
         public long ErrorsCount { get; set; }
 
         public DateTime ImportDate { get; set; }
+
+        public virtual ICollection<ImportHeader> ImportHeaders { get; set; }
+        public virtual ICollection<ImportParameter> ImportParameters { get; set; }
+        public virtual ICollection<AnalysisData> AnalysisDatas { get; set; }
     }
 }

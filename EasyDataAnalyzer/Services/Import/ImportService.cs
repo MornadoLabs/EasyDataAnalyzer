@@ -105,6 +105,16 @@ namespace EasyDataAnalyzer.Services.Import
             };
         }
 
+        public List<UserImport> LoadUserImports(string userId)
+        {
+            if (string.IsNullOrWhiteSpace(userId))
+            {
+                return new List<UserImport>();
+            }
+
+            return ImportRepository.LoadUserImports(userId);
+        }
+
         private void SetImportStrategy(ImportMethods method)
         {
             switch (method)

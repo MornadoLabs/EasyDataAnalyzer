@@ -35,7 +35,6 @@ namespace EasyDataAnalyzer.Analysis {
                 let xField = <number>$('#' + self.ElementIDs.X_Field).val();
                 let yField = <number>$('#' + self.ElementIDs.Y_Field).val();
                 window.location.replace(self.Urls.AnalyzeData + '?xField=' + xField + '&yField=' + yField);
-                //window.location.href = self.Urls.AnalyzeData + '?xField=' + xField + '&yField=' + yField;
             });
         }
 

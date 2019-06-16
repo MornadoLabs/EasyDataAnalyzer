@@ -84,7 +84,17 @@ namespace EasyDataAnalyzer.Controllers
         [Authorize]
         public JsonResult LoadCharts()
         {
-            return Json(AnalysisService.LoadChartsData(AnalysisParameters.Parameters, AnalysisParameters.AnalysisResult));
+            var result = AnalysisService.LoadChartsData(AnalysisParameters.Parameters, AnalysisParameters.AnalysisResult);
+            return Json(result);
+        }
+
+        [HttpGet]
+        public ActionResult LoadAnalysisHistory()
+        {
+            return View(new AnalysisHistoryViewModel
+            {
+                AnalysisHistories = AnalysisService.LoadAnalysisHistories(User.GetUserID())
+            });
         }
     }
 }

@@ -20,6 +20,11 @@ namespace EasyDataAnalyzer.Repositories
             DbContext.SaveChanges();
         }
 
+        public List<AnalysisHistory> LoadAnalysisHistories(string userId)
+        {
+            return DbContext.AnalysisData.Where(ad => userId.Equals(ad.Import.User.Id)).Select(ad => ad.AnalysisHistory).ToList();
+        }
+
         public List<UserImport> LoadUserImports(string userId)
         {
             return DbContext.UserImports.Where(ui => userId.Equals(ui.User.Id)).ToList();

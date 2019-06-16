@@ -16,5 +16,7 @@ namespace EasyDataAnalyzer.Data.Entities
 
         [Required]
         public int Priority { get; set; }
+
+        public virtual ICollection<ImportHeader> ImportHeaders { get; set; }
     }
 }

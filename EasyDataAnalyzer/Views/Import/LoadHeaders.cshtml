@@ -25,8 +25,8 @@
                 {
                     <tr>
                         <td><p id=@($"header{i}")>@Model.Headers[i]</p></td>
-                        <td>@Html.DropDownList($"dataTypeHeader{i}", Model.DataTypes.Select(dt => new SelectListItem { Text = dt.ToString(), Value = ((int)dt).ToString() }), new { @class = "selectDropDown" })</td>
-                        <td>@Html.DropDownList($"priorityHeader{i}", Model.PriorityLevels.Select(p => new SelectListItem { Text = p.ToString(), Value = ((int)p).ToString() }), new { @class = "selectDropDown" })</td>
+                        <td>@Html.DropDownList($"dataTypeHeader{i}", Model.DataTypes.Select(dt => new SelectListItem { Text = EasyDataAnalyzer.Helpers.EnumHelper<EasyDataAnalyzer.Enums.ImportDataTypes>.GetDisplayValue(dt), Value = ((int)dt).ToString() }), new { @class = "selectDropDown" })</td>
+                        <td>@Html.DropDownList($"priorityHeader{i}", Model.PriorityLevels.Select(p => new SelectListItem { Text = EasyDataAnalyzer.Helpers.EnumHelper<EasyDataAnalyzer.Enums.ImportDataPriorityLevels>.GetDisplayValue(p), Value = ((int)p).ToString() }), new { @class = "selectDropDown" })</td>
                     </tr>
                 }
             </tbody>

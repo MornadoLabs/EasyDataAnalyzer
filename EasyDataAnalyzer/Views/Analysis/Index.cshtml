@@ -13,7 +13,7 @@
                 <label for="analysisMethods">Оберіть метод аналізу</label>
             </div>
             <div class="col-md-4">
-                @Html.DropDownList($"analysisMethod", Model.AnalysisMethods.Select(am => new SelectListItem { Text = am.ToString(), Value = ((int)am).ToString() }), new { @class = "selectDropDown" })
+                @Html.DropDownList($"analysisMethod", Model.AnalysisMethods.Select(am => new SelectListItem { Text = EasyDataAnalyzer.Helpers.EnumHelper<EasyDataAnalyzer.Enums.AnalysisMethods>.GetDisplayValue(am), Value = ((int)am).ToString() }), new { @class = "selectDropDown" })
             </div>
         </div>
 

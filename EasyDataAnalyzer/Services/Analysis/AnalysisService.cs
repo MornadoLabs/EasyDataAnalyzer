@@ -59,9 +59,20 @@ namespace EasyDataAnalyzer.Services.Analysis
 
         public IChartResults LoadChartsData(AnalysisParametersModel parameters, IAnalysisResult analysisResult)
         {
+            SetAnalysisStrategy(parameters.AnalysisMethod);
             var data = ImportService.LoadDataByImportId(parameters.ImportIds);
             var headers = ImportService.LoadImportHeadersById(parameters.MainHeadersId);
             return AnalysisStrategy.LoadChartsData(headers, data, analysisResult);
+        }
+
+        public List<AnalysisHistory> LoadAnalysisHistories(string userId)
+        {
+            if (string.IsNullOrWhiteSpace(userId))
+            {
+                return new List<AnalysisHistory>();
+            }
+
+            return AnalysisRepository.LoadAnalysisHistories(userId);
         }
 
         private void SetAnalysisStrategy(AnalysisMethods analysisMethod)

@@ -22,7 +22,10 @@ namespace EasyDataAnalyzer.Services.Analysis.AnalysisStrategies
             var sequenceX = data.Where(id => id.Header.Id == headers[0].Id);
             foreach (var x in sequenceX)
             {
-                var y = data.FirstOrDefault(id => id.Header.Import.Id == x.Header.Import.Id && id.RowNumber == x.RowNumber);
+                var y = data.FirstOrDefault(
+                    id => id.Header.Import.Id == x.Header.Import.Id 
+                    && id.Header.Id == headers[1].Id
+                    && id.RowNumber == x.RowNumber);
                 points.Add(new Point(double.Parse(x.Value), double.Parse(y.Value)));
             }
 
@@ -42,10 +45,10 @@ namespace EasyDataAnalyzer.Services.Analysis.AnalysisStrategies
                 Result = OperationResult.Success,
                 AnalysisMethod = AnalysisMethods.Regression,
                 Points = points,
-                Alpha = alpha,
-                Beta = beta,
-                NotAlpha = notAlpha,
-                NotBeta = notBeta
+                Alpha = Math.Round(alpha, 2),
+                Beta = Math.Round(beta, 2),
+                NotAlpha = Math.Round(notAlpha, 2),
+                NotBeta = Math.Round(notBeta, 2)
             };
         }
 
@@ -53,16 +56,16 @@ namespace EasyDataAnalyzer.Services.Analysis.AnalysisStrategies
         {
             var results = analysisResult as RegressionResult;
 
-            var minX = results.Points.Min(p => p.X);
-            var maxX = results.Points.Max(p => p.X);
+            var minX = results.Points.Min(p => p.X) - 10;
+            var maxX = results.Points.Max(p => p.X) + 10;
             var yToX = new List<Point>
             {
                 new Point(minX, results.Alpha + results.Beta * minX),
                 new Point(maxX, results.Alpha + results.Beta * maxX)
             };
 
-            var minY = results.Points.Min(p => p.Y);
-            var maxY = results.Points.Max(p => p.Y);
+            var minY = results.Points.Min(p => p.Y) - 10;
+            var maxY = results.Points.Max(p => p.Y) + 10;
             var xToY = new List<Point>
             {
                 new Point(results.NotAlpha + results.NotBeta * minY, minY),

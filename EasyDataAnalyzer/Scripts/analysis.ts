@@ -73,7 +73,6 @@ namespace EasyDataAnalyzer.Analysis {
                     ImportIds: importIds
                 }
                 window.location.replace(self.Urls.LoadSettings + '?settings=' + JSON.stringify(data));
-                //window.location.href = self.Urls.LoadSettings + '?settings=' + JSON.stringify(data);
             });
         }
 

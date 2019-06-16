@@ -4,12 +4,22 @@ namespace EasyDataAnalyzer.Analysis.Results {
 
     export class DatasetModel {
         constructor(data: ChartPoint[], showLine: boolean, showPoint: boolean) {
+            let bgColor: string[] = [];
+            let brdColor: string[] = [];
+
+            data.forEach((i) => {
+                bgColor.push('rgba(255, 99, 132, 0.2)');
+                brdColor.push('rgba(255, 99, 132, 1)');
+            });
+
             this.showLine = showLine;
             this.fill = false;
             this.tension = 0;
             this.data = data;
-            this.backgroundColor = ['rgba(255, 99, 132, 0.2)'];
-            this.borderColor = ['rgba(255,99,132,1)'];
+            //this.backgroundColor = ['rgba(255, 99, 132, 0.2)'];
+            //this.borderColor = ['rgba(255, 99, 132, 1)'];
+            this.backgroundColor = bgColor;
+            this.borderColor = brdColor;
             this.borderWidth = 2;
             this.pointRadius = showPoint ? 5 : 0;
         }
@@ -32,7 +42,7 @@ namespace EasyDataAnalyzer.Analysis.Results {
         };
 
         private Urls = {
-            LoadSettings: "Analysis/LoadCharts",
+            LoadSettings: "LoadCharts",
         };
 
         constructor() {
@@ -53,16 +63,27 @@ namespace EasyDataAnalyzer.Analysis.Results {
                 async: false,
                 method: "GET",
                 success: (response) => {
-                    let YToXChart = self.initializeChart(YToXContext, response.AnalysisData, response.YtoX, response.XLabel, response.YLabel);
-                    let XToYChart = self.initializeChart(XToYContext, response.AnalysisData, response.XtoY, response.YLabel, response.XLabel);
+                    let data: ChartPoint[] = response.analysisData;
+                    let chartData: ChartPoint[] = response.ytoX;
+                    let YToXChart = self.initializeChart(YToXContext, data, response.ytoX, response.xLabel, response.yLabel);
+
+                    let reversedData: ChartPoint[] = [];
+                    let reversedChart: ChartPoint[] = [];
+                    data.forEach((e, i) => {
+                        reversedData.push({ x: e.y, y: e.x, r: e.r, t: e.t });
+                    });
+                    chartData.forEach((e, i) => {
+                        reversedChart.push({ x: e.y, y: e.x, r: e.r, t: e.t });
+                    });
+                    let XToYChart = self.initializeChart(XToYContext, reversedData, reversedChart, response.yLabel, response.xLabel);
                 }
             });
         }
 
         private initializeChart(context: CanvasRenderingContext2D, points: ChartPoint[], resultChart: ChartPoint[], axesXLable: string, axesYLabel: string): Chart {
             let datasets = [];
-            datasets.push(new DatasetModel(points, true, false));
-            datasets.push(new DatasetModel(resultChart, false, true));
+            datasets.push(new DatasetModel(resultChart, true, false));
+            datasets.push(new DatasetModel(points, false, true));
 
             let minX = <number>points[0].x,
                 minY = <number>points[0].y,
@@ -101,8 +122,8 @@ namespace EasyDataAnalyzer.Analysis.Results {
                                 display: false
                             },
                             ticks: {
-                                min: minX - 1,
-                                max: maxX + 1
+                                min: minX - 10,
+                                max: maxX + 10
                             },
                             scaleLabel: {
                                 display: true,
@@ -113,8 +134,8 @@ namespace EasyDataAnalyzer.Analysis.Results {
                         }],
                         yAxes: [{
                             ticks: {
-                                min: minY - 1,
-                                max: maxY + 1
+                                min: minY - 10,
+                                max: maxY + 10
                             },
                             scaleLabel: {
                                 display: true,

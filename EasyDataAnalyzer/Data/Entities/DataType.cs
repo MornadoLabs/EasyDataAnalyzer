@@ -13,5 +13,7 @@ namespace EasyDataAnalyzer.Data.Entities
         [Required]
         [MaxLength(450)]
         public string Description { get; set; }
+
+        public virtual ICollection<ImportHeader> ImportHeaders { get; set; }
     }
 }

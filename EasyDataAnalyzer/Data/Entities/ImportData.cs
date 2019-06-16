@@ -11,7 +11,7 @@ namespace EasyDataAnalyzer.Data.Entities
         public long Id { get; set; }
 
         [Required]
-        public ImportHeader Header { get; set; }
+        public virtual ImportHeader Header { get; set; }
 
         [Required]
         public long RowNumber { get; set; }

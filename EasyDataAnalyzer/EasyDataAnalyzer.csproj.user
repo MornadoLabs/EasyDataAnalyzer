@@ -14,6 +14,16 @@
     <NameOfLastUsedPublishProfile>FolderProfile</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ItemGroup>
+    <TypeScriptCompile Update="Scripts\analysisHistory.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Update="Scripts\importHistory.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+  </ItemGroup>
+  <ItemGroup>
     <TypeScriptCompile Update="Scripts\regressionResults.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
