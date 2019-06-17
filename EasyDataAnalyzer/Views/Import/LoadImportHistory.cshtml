@@ -30,12 +30,32 @@
                         <td><p id=@($"recordsCount{i}")>@Model.Imports[i].RecordsCount</p></td>
                         <td><p id=@($"errorsCount{i}")>@Model.Imports[i].ErrorsCount</p></td>
                         <td><p id=@($"importDate{i}")>@Model.Imports[i].ImportDate</p></td>
-                        <td><button id=@($"loadParams{i}") class="btn btn-info">Параметри</button></td>
-                        <td><button id=@($"loadData{i}") class="btn btn-info">Дані</button></td>
+                        <td><button id=@($"loadParams{i}") class="btn btn-info" data-toggle="modal" data-target="#infoModal">Параметри</button></td>
+                        <td><button id=@($"loadData{i}") class="btn btn-info" data-toggle="modal" data-target="#infoModal">Дані</button></td>
                     </tr>
                 }
             </tbody>
         </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="infoModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id="infoModalHeader"></h4>
+            </div>
+            <div class="modal-body" id="infoModalBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+            </div>
+        </div>
+
     </div>
 </div>
 

@@ -1,0 +1,33 @@
+﻿
+
+@model EasyDataAnalyzer.Models.Import.ImportHistoryDataViewModel
+
+@{ 
+    var rows = Model.ImportData.GroupBy(id => id.RowNumber).ToDictionary(g => g.Key, g => g.ToList());
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <table id="parametersInfoTable">
+            <thead>
+                <tr>
+                    @foreach (var header in Model.ImportHeaders)
+                    {
+                        <th>@header.HeaderName</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var row in rows)
+                {
+                    <tr>
+                        @foreach (var header in Model.ImportHeaders)
+                        {
+                            <td>@(row.Value.Where(r => r.Header.Id == header.Id).FirstOrDefault()?.Value)</td>   
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -11,5 +11,7 @@ namespace EasyDataAnalyzer.Models.Analysis
         public OperationResult Result { get; set; }
         public AnalysisMethods AnalysisMethod { get; set; }
         public List<Point>[] Clusters { get; set; }
+        public string YLabel { get; set; }
+        public string XLabel { get; set; }
     }
 }

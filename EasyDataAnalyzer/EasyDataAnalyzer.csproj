@@ -14,6 +14,7 @@
     <None Remove="Scripts\analysis.ts" />
     <None Remove="Scripts\analysisHistory.ts" />
     <None Remove="Scripts\analyzeSettings.ts" />
+    <None Remove="Scripts\clusteringResults.ts" />
     <None Remove="Scripts\config.ts" />
     <None Remove="Scripts\import.ts" />
     <None Remove="Scripts\importHistory.ts" />

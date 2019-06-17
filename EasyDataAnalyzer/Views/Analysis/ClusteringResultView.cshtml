@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "ClusteringResultView";
+}
+@model EasyDataAnalyzer.Models.Analysis.ClusteringResult
+<h2>Результати аналізу</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <canvas class="small-chart" id="resultChart" width="200" height="200"></canvas>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12"><b>Кластери</b></div>
+</div>
+
+@for (int i = 0; i < Model.Clusters.Length; i++)
+{
+    <div class="row">
+        <div class="col-md-12"><b>Кластер #@(i + 1)</b></div>
+    </div>
+
+    foreach (var cluster in Model.Clusters[i])
+    {
+        <div class="row">
+            <div class="col-md-4">
+                @Model.XLabel: @cluster.X
+            </div>
+            <div class="col-md-4">
+                @Model.YLabel: @cluster.Y
+            </div>
+        </div>
+    }
+}
+
+
+<environment include="Development">
+    <script src="~/js/clusteringResults.js" asp-append-version="true"></script>
+</environment>
+

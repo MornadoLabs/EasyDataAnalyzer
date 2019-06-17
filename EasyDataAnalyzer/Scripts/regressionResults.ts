@@ -16,8 +16,6 @@ namespace EasyDataAnalyzer.Analysis.Results {
             this.fill = false;
             this.tension = 0;
             this.data = data;
-            //this.backgroundColor = ['rgba(255, 99, 132, 0.2)'];
-            //this.borderColor = ['rgba(255, 99, 132, 1)'];
             this.backgroundColor = bgColor;
             this.borderColor = brdColor;
             this.borderWidth = 2;
@@ -42,7 +40,7 @@ namespace EasyDataAnalyzer.Analysis.Results {
         };
 
         private Urls = {
-            LoadSettings: "LoadCharts",
+            LoadCharts: "LoadCharts",
         };
 
         constructor() {
@@ -59,7 +57,7 @@ namespace EasyDataAnalyzer.Analysis.Results {
             let XToYContext = XToYCanvas.getContext("2d");
 
             $.ajax({
-                url: self.Urls.LoadSettings,
+                url: self.Urls.LoadCharts,
                 async: false,
                 method: "GET",
                 success: (response) => {

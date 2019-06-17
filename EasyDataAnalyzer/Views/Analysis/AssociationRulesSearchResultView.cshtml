@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "AssociationRulesSearchResultView";
+}
+@model EasyDataAnalyzer.Models.Analysis.AssociationRulesSearchResult
+<h2>Результати аналізу</h2>
+
+@if (Model.Rules.Count() > 0)
+{
+    @foreach (var rule in Model.Rules)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                @rule.ToString()
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="row">
+        <div class="col-md-12">Асоціативних правил не знайдено</div>
+    </div>
+}
+
+
+
+

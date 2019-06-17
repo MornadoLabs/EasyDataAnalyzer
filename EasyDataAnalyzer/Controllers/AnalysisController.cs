@@ -73,9 +73,9 @@ namespace EasyDataAnalyzer.Controllers
                 case AnalysisMethods.Regression:
                     return View("RegressionResultView", AnalysisParameters.AnalysisResult);
                 case AnalysisMethods.AssociationRulesSearch:
-                    return View(AnalysisParameters.AnalysisResult);
+                    return View("AssociationRulesSearchResultView", AnalysisParameters.AnalysisResult);
                 case AnalysisMethods.Clustering:
-                    return View(AnalysisParameters.AnalysisResult);
+                    return View("ClusteringResultView", AnalysisParameters.AnalysisResult);
                 default:
                     throw new Exception("Невідомий метод аналізу.");
             }

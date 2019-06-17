@@ -16,13 +16,7 @@ namespace EasyDataAnalyzer.Services.Analysis.AnalysisStrategies
             {
                 throw new Exception("Мінімальне значення затребуваності не задано.");
             }
-
-            var idHeader = headers.FirstOrDefault(h => h.HeaderName.Contains("ID", StringComparison.CurrentCultureIgnoreCase));
-            if (idHeader == null)
-            {
-                throw new Exception("Не знайдено колонки ID.");
-            }
-
+            
             var confidence = (double)args[0];
             var apriori = new Apriori<string>(2, confidence);
             var dataSet = GetDataSet(data);
@@ -50,6 +44,10 @@ namespace EasyDataAnalyzer.Services.Analysis.AnalysisStrategies
                 var rowData = data.Where(d => d.RowNumber == rowNumbers[i]);
                 foreach (var rowCell in rowData)
                 {
+                    if (result[i] == null)
+                    {
+                        result[i] = new SortedSet<string>();
+                    }
                     result[i].Add(rowCell.Value);
                 }
             }

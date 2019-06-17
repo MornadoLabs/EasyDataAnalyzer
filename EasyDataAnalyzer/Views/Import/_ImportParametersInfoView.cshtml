@@ -1,0 +1,26 @@
+﻿
+@model List<EasyDataAnalyzer.Data.Entities.ImportParameter>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table id="parametersInfoTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Параметр</th>
+                        <th>Значення</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var param in Model)
+                    {
+                        <tr>
+                            <td>@(Model.IndexOf(param) + 1)</td>
+                            <td>@param.ParameterName</td>
+                            <td>@param.ParameterValue</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>

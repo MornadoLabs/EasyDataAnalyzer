@@ -69,5 +69,16 @@ namespace EasyDataAnalyzer.Repositories
             var headerIds = DbContext.ImportHeaders.Where(ih => importIds.Contains(ih.Import.Id)).Select(ih => ih.Id);
             return DbContext.ImportData.Where(id => headerIds.Contains(id.Header.Id)).ToList();
         }
+
+        public List<ImportData> LoadDataByImportId(long importId)
+        {
+            var headerIds = DbContext.ImportHeaders.Where(ih => importId == ih.Import.Id).Select(ih => ih.Id);
+            return DbContext.ImportData.Where(id => headerIds.Contains(id.Header.Id)).ToList();
+        }
+        
+        public List<ImportParameter> LoadParametersByImportId(long importId)
+        {
+            return DbContext.ImportParameters.Where(ip => ip.Import.Id == importId).ToList();
+        }
     }
 }

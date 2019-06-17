@@ -61,7 +61,7 @@ using EasyDataAnalyzer.Models;
             WriteLiteral("\r\n<div class=\"row\">\r\n    <div class=\"col-lg-12 text-center\">\r\n        ");
             EndContext();
             BeginContext(115, 52, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "7bd5ed70795f4c2da61a70b3854407e3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "31b0a6fe6fbf490391964b2d4ea0faa8", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

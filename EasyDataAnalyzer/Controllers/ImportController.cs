@@ -106,5 +106,21 @@ namespace EasyDataAnalyzer.Controllers
             });
         }
 
+        [HttpGet]
+        public IActionResult LoadImportParams(long importId)
+        {
+            return PartialView("_ImportParametersInfoView", ImportService.LoadParametersByImportId(importId));
+        }
+
+        [HttpGet]
+        public IActionResult LoadImportData(long importId)
+        {
+            return PartialView("_ImportDataInfoView", new ImportHistoryDataViewModel
+            {
+                ImportHeaders = ImportService.LoadImportHeadersByImportId(importId),
+                ImportData = ImportService.LoadDataByImportId(importId)
+            });
+        }
+
     }
 }

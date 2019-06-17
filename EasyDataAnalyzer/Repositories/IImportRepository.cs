@@ -18,5 +18,7 @@ namespace EasyDataAnalyzer.Repositories
         List<ImportHeader> LoadImportHeadersByImportId(long importId);
         List<ImportHeader> LoadImportHeadersById(List<int> headerIds);
         List<ImportData> LoadDataByImportId(List<long> importIds);
+        List<ImportData> LoadDataByImportId(long importId);
+        List<ImportParameter> LoadParametersByImportId(long importId);
     }
 }

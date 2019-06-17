@@ -42,3 +42,7 @@ D:\Learning\4_course\Diploma\EasyDataAnalyzer\EasyDataAnalyzer\obj\Debug\netcore
 D:\Learning\4_course\Diploma\EasyDataAnalyzer\EasyDataAnalyzer\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 D:\Learning\4_course\Diploma\EasyDataAnalyzer\EasyDataAnalyzer\obj\Debug\netcoreapp2.1\Razor\Views\Import\LoadImportHistory.g.cshtml.cs
 D:\Learning\4_course\Diploma\EasyDataAnalyzer\EasyDataAnalyzer\obj\Debug\netcoreapp2.1\Razor\Views\Analysis\LoadAnalysisHistory.g.cshtml.cs
+D:\Learning\4_course\Diploma\EasyDataAnalyzer\EasyDataAnalyzer\obj\Debug\netcoreapp2.1\Razor\Views\Analysis\ClusteringResultView.g.cshtml.cs
+D:\Learning\4_course\Diploma\EasyDataAnalyzer\EasyDataAnalyzer\obj\Debug\netcoreapp2.1\Razor\Views\Analysis\AssociationRulesSearchResultView.g.cshtml.cs
+D:\Learning\4_course\Diploma\EasyDataAnalyzer\EasyDataAnalyzer\obj\Debug\netcoreapp2.1\Razor\Views\Import\_ImportParametersInfoView.g.cshtml.cs
+D:\Learning\4_course\Diploma\EasyDataAnalyzer\EasyDataAnalyzer\obj\Debug\netcoreapp2.1\Razor\Views\Import\_ImportDataInfoView.g.cshtml.cs

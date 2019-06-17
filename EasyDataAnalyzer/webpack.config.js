@@ -7,6 +7,7 @@ module.exports = {
         analysis: './Scripts/analysis.ts',
         analyzeSettings: './Scripts/analyzeSettings.ts',
         regressionResults: './Scripts/regressionResults.ts',
+        clusteringResults: './Scripts/clusteringResults.ts',
         importHistory: './Scripts/importHistory.ts',
         analysisHistory: './Scripts/analysisHistory.ts',
     },

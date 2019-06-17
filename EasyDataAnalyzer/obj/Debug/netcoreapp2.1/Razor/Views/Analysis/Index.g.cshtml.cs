@@ -263,12 +263,12 @@ WriteAttributeValue("", 2470, $"importDate{i}", 2470, 19, false);
             WriteLiteral("            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n<div class=\"row\">\r\n    <div class=\"col-md-4\">\r\n        <input type=\"submit\" id=\"okButton\" class=\"btn btn-default\" value=\"Аналізувати\" />\r\n    </div>\r\n</div>\r\n\r\n");
             EndContext();
             BeginContext(2795, 123, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6802fc224e2448f0ac89db681f9fa2a4", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d8b9675b0c23474a944c48745515b6d6", async() => {
                 BeginContext(2830, 6, true);
                 WriteLiteral("\r\n    ");
                 EndContext();
                 BeginContext(2836, 66, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "33898dca8c444f0db3a24b792edb4479", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1a4215b62f3f4f918398300a478752ea", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();

@@ -31,9 +31,24 @@ namespace EasyDataAnalyzer.Services.Import
             return ImportRepository.LoadDataByImportId(importIds);
         }
 
+        public List<ImportData> LoadDataByImportId(long importId)
+        {
+            return ImportRepository.LoadDataByImportId(importId);
+        }
+
+        public List<ImportParameter> LoadParametersByImportId(long importId)
+        {
+            return ImportRepository.LoadParametersByImportId(importId);
+        }
+
         public List<ImportHeader> LoadImportHeadersById(List<int> headerIds)
         {
             return ImportRepository.LoadImportHeadersById(headerIds);
+        }
+
+        public List<ImportHeader> LoadImportHeadersByImportId(long importId)
+        {
+            return ImportRepository.LoadImportHeadersByImportId(importId);
         }
 
         public List<string> GetImportHeaders(FileStream dataStream)

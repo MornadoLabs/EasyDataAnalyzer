@@ -186,12 +186,12 @@ WriteAttributeValue("", 871, $"header{i}", 871, 15, false);
             WriteLiteral("            </tbody>\r\n        </table>\r\n    </div>\r\n</div>\r\n<div class=\"row\">\r\n    <div class=\"col-md-4\">\r\n        <button class=\"btn btn-default\" id=\"submitButton\">Готово</button>\r\n    </div>\r\n</div>\r\n\r\n");
             EndContext();
             BeginContext(1770, 125, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0adaaccd362944b6891f1efb4f2b9f2e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("environment", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b948f54fc67c4a4e8a52593feecfca0b", async() => {
                 BeginContext(1805, 10, true);
                 WriteLiteral("\r\n        ");
                 EndContext();
                 BeginContext(1815, 64, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ae5ae6b08b36428f9fb44806d44e4f47", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b96cf9fc964441c183b65a6a28b1e4ae", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
